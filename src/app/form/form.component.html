@@ -1,0 +1,53 @@
+<div class="form-layout" [formGroup]="interview_form" (ngSubmit)="onSubmit()">
+    <h1>INTERVIEW REQUIREMENT</h1>
+    <div class="form" >
+    <div class="form-group">
+    <label>Name</label><br>
+    <input formControlName="name" type="text" class="form-control">
+    </div>
+  
+    <div id="box" class="form-group">
+    <label>Age</label><br>
+    <input formControlName="age" type="text" class="form-control">
+    </div>
+    </div>
+<div class="form1" formGroupName="more_info">  
+    <div  id="box1" class="form-group">    
+    <label>Gender</label><br>
+    <select  formControlName="Gender" [(ngModel)]="selected"  class="form-control">  
+      <option value="">Select</option>
+        <option *ngFor=" let item of Gender" [ngValue]="item">{{item}}</option>  
+    </select>  
+    </div>
+    <div [ngSwitch]="selected" class="form-group" >    
+        <div *ngSwitchCase="'Female'"  id="box2" >
+            <label for="">Pregnancy</label>
+            <select [(ngModel)]="selected_o" class="form-control" formControlName="pregnancy">
+            <option value="">Select</option>
+            <option *ngFor="let c of pregnancy" [ngValue]="c" >{{ c }}</option>
+          </select>
+        </div>
+     </div>
+    <div [ngSwitch]="selected_o" class="form-group"  >    
+        <div *ngSwitchCase="'Yes'" id="box3">
+            <label for="">Term</label>
+            <select id="" formControlName="term" class="form-control" >
+            <option value="">Select</option>
+            <option *ngFor="let c of term" [ngValue]="c" >{{ c }}</option>
+          </select>
+        </div>     
+    </div>  
+  </div> 
+<br>
+<div id="box4"  class="form-group" >
+    <label>Health</label><br>
+    <select id="" formControlName="health">
+      <option value="">Select</option>
+      <option *ngFor="let c of health" [ngValue]="c">{{ c }}</option>
+    </select>
+  </div>
+  <br>
+  <div>
+  <input type="submit" value="Submit" class="btn">
+  </div>
+  <p id="demo"></p>
